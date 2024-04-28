@@ -29,3 +29,17 @@ function getComputerChoice() {
     }
     return computerChoice;
 }
+
+function getUserChoice() {
+    let userChoice = "notValid"
+    while (userChoice === "notValid") { //ask while user input is not valid
+        userChoice = prompt("Rock, Paper or Scissors ? ");
+        userChoice = userChoice.trim().toLowerCase(); //remove space and lowerCase to compare
+        if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors") { //if valid return, else set input to notValid
+            return userChoice;
+        } else {
+            console.log("Invalid answer. Please select a valid one.");
+            userChoice = "notValid";
+        }
+    }
+}
