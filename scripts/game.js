@@ -1,25 +1,20 @@
-// PRINT WELCOME MESSAGE
+// WELCOME
 console.log("_".repeat(50));
 console.log("Welcome to Rock - Paper - Scissors game !");
 console.log("_".repeat(50));
 
 let userGameStart = parseInt(prompt("Enter 1 to play."));
 let gameState = userGameStart == 1 ? true : false;
-// WHILE USER WANT TO PLAY
+
+///////////GAME LOOP/////////////////////////////
 while (gameState) {
-//    ASK USER NUMBER OF ROUNDS TO PLAY
-//    SET VAR rounds FOR ROUNDS TO PLAY WITH USER INPUT
-//    SET VARS FOR SCORE
     var userScore = 0;
     var computerScore = 0;
     let rounds = parseInt(prompt("How many rounds do you want to play ? "));
-//    WHILE NOT {rounds} ROUNDS ARE PLAYED
     while(rounds > 0) {
-        //PLAY ROUND BY CALLING playRound() FUNCTION
         playRound();
         rounds--;
     }
-//  END WHILE
     console.log("End !");
 // PRINT SCORE
     console.log("Final score :");
@@ -32,19 +27,17 @@ while (gameState) {
         console.log("You lose... Maybe next time ?");
     }
     console.log(" ".repeat(20));
-// ASK USER TO REPLAY OR QUIT
+// REPLAY OR QUIT
     let replay = prompt("Do you want to play again ? YES / NO").trim().toLowerCase();
-// IF QUIT
     if(replay === "no") {
-    //BREAK LOOP
         break;
     }
 
 }
-// END WHILE
-// PRINT QUIT MESSAGE
 console.log(" ".repeat(20));
 console.log("Thanks for playing ! See you. ")
+
+////////////////////////////////////////////////
 
 
 function getComputerChoice() {
@@ -61,6 +54,7 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+
 function getUserChoice() {
     let userChoice = "notValid"
     while (userChoice === "notValid") { //ask while user input is not valid
@@ -74,6 +68,7 @@ function getUserChoice() {
         }
     }
 }
+
 
 function playRound() {
     /* Play a round :
@@ -116,6 +111,7 @@ function get_formated_choice_text_for_output(choice) {
     //return choice capitalize first letter
     return choice.slice(0,1).toUpperCase() + choice.slice(1);
 }
+
 
 function printScore(userScore, computerScore) {
     console.log(" ".repeat(10) + "| Score |" + " ".repeat(10));
