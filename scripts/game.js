@@ -69,7 +69,7 @@ function playRound() {
     let userChoiceOut = get_formated_choice_text_for_output(userChoice);
     let computerChoiceOut = get_formated_choice_text_for_output(computerChoice);
 
-    console.log("User choice : " + userChoiceOut + " | Computer choice : " + computerChoiceOut);
+    console.log("Your choice : " + userChoiceOut + " | Computer choice : " + computerChoiceOut);
     console.log(userChoiceOut + " vs " + computerChoiceOut + " !");
 
     //Compare situation, determin winner, set score and print formatted text
@@ -79,10 +79,10 @@ function playRound() {
         if((userChoice === "paper" && computerChoice === "rock") || 
            (userChoice === "scissors" && computerChoice === "paper") ||
            (userChoice === "rock" && computerChoice === "scissors")) {
-            console.log("User win ! " + userChoiceOut + " > " + computerChoiceOut);
+            console.log("You win ! " + userChoiceOut + " > " + computerChoiceOut);
             userScore++;
         } else {
-            console.log("Computer win ! " + computerChoiceOut + " > " + userChoiceOut);
+            console.log("You loose ... " + computerChoiceOut + " > " + userChoiceOut);
             computerScore++;
         }
     }
@@ -99,5 +99,5 @@ function get_formated_choice_text_for_output(choice) {
 
 function printScore(userScore, computerScore) {
     console.log(" ".repeat(10) + "| Score |" + " ".repeat(10));
-    console.log(" ".repeat(5) + "User : " + userScore + " | Computer : " + computerScore);
+    console.log(" ".repeat(5) + "You : " + userScore + " | Computer : " + computerScore);
 }
