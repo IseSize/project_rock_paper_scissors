@@ -20,13 +20,32 @@ while (gameState) {
         rounds--;
     }
 //  END WHILE
-// PRINT score SCORE
+    console.log("End !");
+// PRINT SCORE
+    console.log("Final score :");
+    printScore(userScore, computerScore);
+    if (userScore == computerScore) {
+        console.log("Oh ! It's a Draw. ");
+    } else if (userScore > computerScore) {
+        console.log("You win ! Congrats !");
+    } else {
+        console.log("You lose... Maybe next time ?");
+    }
+    console.log(" ".repeat(20));
 // ASK USER TO REPLAY OR QUIT
+    let replay = prompt("Do you want to play again ? YES / NO").trim().toLowerCase();
 // IF QUIT
-//    BREAK LOOP
+    if(replay === "no") {
+    //BREAK LOOP
+        break;
+    }
+
 }
 // END WHILE
 // PRINT QUIT MESSAGE
+console.log(" ".repeat(20));
+console.log("Thanks for playing ! See you. ")
+
 
 function getComputerChoice() {
     // randomly return rock, paper or scissors
@@ -72,7 +91,7 @@ function playRound() {
     console.log("Your choice : " + userChoiceOut + " | Computer choice : " + computerChoiceOut);
     console.log(userChoiceOut + " vs " + computerChoiceOut + " !");
 
-    //Compare situation, determin winner, set score and print formatted text
+    //Compare situation, determine winner, set score and print formatted text
     if (userChoice === computerChoice) {
         console.log("It's a draw!");
     } else {
@@ -94,6 +113,7 @@ function playRound() {
 
 
 function get_formated_choice_text_for_output(choice) {
+    //return choice capitalize first letter
     return choice.slice(0,1).toUpperCase() + choice.slice(1);
 }
 
