@@ -2,6 +2,22 @@
 
 const divGame = document.querySelector("#game");
 const playButton = document.querySelector("#playButton");
+const mainMenu = document.querySelector("#mainMenu");
+
+
+const selectMenu = document.querySelector("#selectMenu");
+
+const roundSelection = document.querySelector("#selectRound");
+const actualRoundText = document.querySelector("#actualRound");
+const numberRoundText = document.querySelector("#numberRound");
+const userScoreText = document.querySelector("#userScore");
+const computerScoreText = document.querySelector("#computerScore")
+
+var userScore = 0;
+var computerScore = 0;
+var round = 0;
+var actualRound = 1;
+
 
 playButton.addEventListener("mouseover", () => {
     playButton.style.top = "-10px";
@@ -15,15 +31,25 @@ playButton.addEventListener("mouseout", () => {
     console.log('hover');
 });
 
+playButton.addEventListener("click", () => {
+    startGame();
+    
+    
+});
+
+function startGame() {
+    userScore = 0;
+    computerScore = 0;
+    round = parseInt(roundSelection.value);
+    actualRound = 1;
+    showSelectMenu(actualRound, round, userScore, computerScore);
+}
 
 // let userGameStart = parseInt(prompt("Enter 1 to play."));
 // let gameState = userGameStart == 1 ? true : false;
 
 ///////////GAME LOOP/////////////////////////////
 while (gameState) {
-    var userScore = 0;
-    var computerScore = 0;
-    let rounds = parseInt(prompt("How many rounds do you want to play ? "));
     while(rounds > 0) {
         playRound();
         rounds--;
@@ -129,4 +155,18 @@ function get_formated_choice_text_for_output(choice) {
 function printScore(userScore, computerScore) {
     console.log(" ".repeat(10) + "| Score |" + " ".repeat(10));
     console.log(" ".repeat(5) + "You : " + userScore + " | Computer : " + computerScore);
+}
+
+function showSelectMenu(actualRound, round, userScore, computerScore) {
+    mainMenu.style.display = "none";
+    selectMenu.style.display = "block";
+    actualRoundText.textContent = actualRound;
+    numberRoundText.textContent = round;
+    userScoreText = userScore;
+    computerScoreText = computerScore;
+
+}
+
+function getRound() {
+
 }

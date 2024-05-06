@@ -10,13 +10,13 @@
 <body>
     <div id="game">
         <div id="mainMenu" >
-            <div id="mainBackground" >
+            <div id="mainBackground" class="background">
                 <div id="mainTopBackground" ></div>
                 <div id ="mainBotBackground">
                     <div id="mainStripCharacter"></div>
                 </div>  
             </div>
-            <div id="mainForeground">
+            <div id="mainForeground" class="foreGround">
                 <div id="gameTitleSection">
                     <img src="assets/images/ui/gameTitle.svg" id="gameTitle">
                 </div>
@@ -27,13 +27,36 @@
                 </div>
                 <div id="buttonSection">
                     <div id="playButton">
-                        <div id="playText">Play</div>
+                        <div id="playText" class="color684F3A">Play</div>
                         <img src="assets/images/ui/playPanel.svg">
                     </div>
                     <div id="roundSelection">
                         <img src="assets/images/ui/roundSelectPanel.svg" id="roundSelectPanel">
                         <input type="number" id="selectRound" value="3" min="1" max="9">
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="selectMenu">
+            <div id="selectMenuBackground" class="background">
+                <div id="selectStripCharacter"></div>
+            </div>
+            <div id="selectMenuForeground" class="foreGround">
+                <div id="selectMenuTop">
+                    <div id="roundAndScore">
+                        <img src="assets/images/ui/roundScorePanel.svg">
+                    </div>
+                    <div id="actualRound" class="selectTopText">1</div>
+                    <div id="numberRound" class="selectTopText">3</div>
+                    <div id="userScore" class="selectTopText">0</div>
+                    <div id="computerScore" class="selectTopText">0</div>
+                    
+                    <div id="selectCharacterText" class="color684F3A">Rock, Paper or Scissors ?</div>
+                </div>
+                <div id="selectMenuCharacter">
+                    <img src="assets/images/character/paper.svg">
+                    <img src="assets/images/character/rock.svg">
+                    <img src="assets/images/character/scissors.svg">
                 </div>
             </div>
         </div>

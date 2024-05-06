@@ -29,14 +29,8 @@ body {
     margin: 20px auto;
     background-color: #FFF6BF;
 }
-
-#mainMenu {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-#mainBackground {
+/*//// COMMON /////////*/
+.background {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,6 +38,27 @@ body {
     height: 100%;
     z-index: 0;
 }
+.foreGround {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+.color684F3A {
+    color: #684F3A;
+}
+/*////////////////////*/
+#mainMenu {
+
+}
+#mainMenu, #selectMenu {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 #mainTopBackground {
     height: 45%;
     width: auto;
@@ -59,15 +74,7 @@ body {
     height: 40%;
     background-color: #D8CF9E;
 }
-#mainForeground {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-    background-color: rgba(254,255,174,0.5);
-    display: flex;
-    flex-direction: column;
-}
+
 #gameTitleSection, #characterSection, #buttonSection{
     flex-grow: 1;
     align-items: center;
@@ -95,7 +102,6 @@ body {
 #playButton {
     width: 50%;
     position: relative;
-    color: #684F3A;
 }
 #playText {
     position: absolute;
@@ -118,4 +124,61 @@ body {
     transform: translate(-50%, -50%);
     background-color: transparent;
     left: 90%;
+}
+
+/*//////// SELECTION MENU ////////*/
+#selectMenu {
+    display: none;
+}
+
+#roundAndScore {
+    padding: 2%;
+}
+#selectStripCharacter {
+    position: relative;
+    top: 60%;
+    height: 20%;
+    background-color: #D8CF9E;
+}
+.selectTopText {
+    position: absolute;
+    font-size: 40px;
+}
+#actualRound {
+    top: 6%;
+    left: 29%;
+}
+#numberRound {
+    top: 6%;
+    left: 39%;
+}
+#userScore {
+    top: 9.5%;
+    right: 26.5%;
+}
+#computerScore {
+    top: 9.5%;
+    right: 17.5%;
+}
+#selectCharacterText {
+    margin-top: 10%;
+    font-size: 40px;
+    text-align: center;
+}
+#selectMenuTop {
+    height: 50%;
+}
+#selectMenuCharacter {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+#selectMenuCharacter > img {
+    width: 30%;
+    position: relative;
+}
+#selectMenuCharacter > img:hover {
+    width: 40%;
+    cursor: pointer;
 }
