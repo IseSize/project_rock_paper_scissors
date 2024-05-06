@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project - Rock Paper Scissors</title>
-    <script src="scripts/game.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/game_ui.js" defer></script>
 </head>
 <body>
-
+    <div id="game">
+        <div id="mainMenu" >
+            <div id="mainBackground" >
+                <div id="mainTopBackground" ></div>
+                <div id ="mainBotBackground">
+                    <div id="mainStripCharacter"></div>
+                </div>  
+            </div>
+            <div id="mainForeground">
+                <div id="gameTitleSection">
+                    <img src="assets/images/ui/gameTitle.svg" id="gameTitle">
+                </div>
+                <div id="characterSection">
+                    <img src="assets/images/character/paper.svg">
+                    <img src="assets/images/character/rock.svg">
+                    <img src="assets/images/character/scissors.svg">
+                </div>
+                <div id="buttonSection">
+                    <div id="playButton">
+                        <div id="playText">Play</div>
+                        <img src="assets/images/ui/playPanel.svg">
+                    </div>
+                    <div id="roundSelection">
+                        <img src="assets/images/ui/roundSelectPanel.svg" id="roundSelectPanel">
+                        <input type="number" id="selectRound" value="3" min="1" max="9">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
