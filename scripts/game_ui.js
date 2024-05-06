@@ -2,6 +2,7 @@
 
 const divGame = document.querySelector("#game");
 const playButton = document.querySelector("#playButton");
+const playText = document.querySelector("#playText");
 const mainMenu = document.querySelector("#mainMenu");
 
 
@@ -11,76 +12,82 @@ const roundSelection = document.querySelector("#selectRound");
 const actualRoundText = document.querySelector("#actualRound");
 const numberRoundText = document.querySelector("#numberRound");
 const userScoreText = document.querySelector("#userScore");
-const computerScoreText = document.querySelector("#computerScore")
+const computerScoreText = document.querySelector("#computerScore");
+const characterSelection = document.querySelectorAll(".character");
+const versus = document.querySelector("#versus");
+const userCharacter = document.querySelector("#userCharacter");
+const computerCharacter = document.querySelector("#computerCharacter");
 
 var userScore = 0;
 var computerScore = 0;
-var round = 0;
+var rounds = 0;
 var actualRound = 1;
-
-
+var gameState = false;
+var computerChoice = "";
 playButton.addEventListener("mouseover", () => {
     playButton.style.top = "-10px";
     playButton.style.cursor = "pointer";
-    playButton.style.color = "#3A2C22";
+    playText.style.color = "#3A2C22";
     console.log('hover');
 });
 playButton.addEventListener("mouseout", () => {
     playButton.style.top = "0px";
-    playButton.style.color = "#684F3A";
+    playText.style.color = "#684F3A";
     console.log('hover');
 });
 
 playButton.addEventListener("click", () => {
     startGame();
-    
-    
 });
+
+characterSelection.forEach((elem) => {
+    elem.addEventListener("click", () => {
+        userChoice = elem.id;
+        computerChoice = getComputerChoice();
+        playRound(userChoice, computerChoice);
+    });
+});
+
 
 function startGame() {
     userScore = 0;
     computerScore = 0;
-    round = parseInt(roundSelection.value);
+    rounds = parseInt(roundSelection.value);
     actualRound = 1;
-    showSelectMenu(actualRound, round, userScore, computerScore);
+    hideMainMenu();
+    showSelectMenu(actualRound, rounds, userScore, computerScore);
+    //     console.log("End !");
+    // // PRINT SCORE
+    //     console.log("Final score :");
+    //     printScore(userScore, computerScore);
+    //     if (userScore == computerScore) {
+    //         console.log("Oh ! It's a Draw. ");
+    //     } else if (userScore > computerScore) {
+    //         console.log("You win ! Congrats !");
+    //     } else {
+    //         console.log("You lose... Maybe next time ?");
+    //     }
+    //     console.log(" ".repeat(20));
+    // // REPLAY OR QUIT
+    //     let replay = prompt("Do you want to play again ? YES / NO").trim().toLowerCase();
+    //     if(replay === "no") {
+    //         break;
+    //     }
+    
+    console.log(" ".repeat(20));
+    console.log("Thanks for playing ! See you. ")
+    
+    ////////////////////////////////////////////////
 }
 
 // let userGameStart = parseInt(prompt("Enter 1 to play."));
 // let gameState = userGameStart == 1 ? true : false;
 
 ///////////GAME LOOP/////////////////////////////
-while (gameState) {
-    while(rounds > 0) {
-        playRound();
-        rounds--;
-    }
-    console.log("End !");
-// PRINT SCORE
-    console.log("Final score :");
-    printScore(userScore, computerScore);
-    if (userScore == computerScore) {
-        console.log("Oh ! It's a Draw. ");
-    } else if (userScore > computerScore) {
-        console.log("You win ! Congrats !");
-    } else {
-        console.log("You lose... Maybe next time ?");
-    }
-    console.log(" ".repeat(20));
-// REPLAY OR QUIT
-    let replay = prompt("Do you want to play again ? YES / NO").trim().toLowerCase();
-    if(replay === "no") {
-        break;
-    }
 
-}
-console.log(" ".repeat(20));
-console.log("Thanks for playing ! See you. ")
-
-////////////////////////////////////////////////
 
 
 function getComputerChoice() {
-    // randomly return rock, paper or scissors
     let computerChoice;
     let randomNumber = Math.random();
     if (randomNumber < 1/3) {  // Divide [0;1] range in 3 parts and look where randomNumber is 
@@ -91,51 +98,32 @@ function getComputerChoice() {
         computerChoice = "scissors";
     }
     return computerChoice;
+    
 }
 
 
-function getUserChoice() {
-    let userChoice = "notValid"
-    while (userChoice === "notValid") { //ask while user input is not valid
-        userChoice = prompt("Rock, Paper or Scissors ? ");
-        userChoice = userChoice.trim().toLowerCase(); //remove space and lowerCase to compare
-        if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors") { //if valid return, else set input to notValid
-            return userChoice;
-        } else {
-            console.log("Invalid answer. Please select a valid one.");
-            userChoice = "notValid";
-        }
-    }
-}
 
-
-function playRound() {
+function playRound(userChoice, computerChoice) {
     /* Play a round :
     Get user choice, Get computer choice
     Compare user & computer choice and update score
     Print result & score */
 
-    let computerChoice = getComputerChoice();
-    let userChoice = getUserChoice();
-
-    //Format text for output
-    let userChoiceOut = get_formated_choice_text_for_output(userChoice);
-    let computerChoiceOut = get_formated_choice_text_for_output(computerChoice);
-
-    console.log("Your choice : " + userChoiceOut + " | Computer choice : " + computerChoiceOut);
-    console.log(userChoiceOut + " vs " + computerChoiceOut + " !");
-
     //Compare situation, determine winner, set score and print formatted text
+    hideSelectMenu();
+    showVersusMenu();
+    computerCharacter.setAttribute("src", "assets/images/character/"+computerChoice+".svg");
+    userCharacter.setAttribute("src", "assets/images/character/"+userChoice+".svg");
     if (userChoice === computerChoice) {
         console.log("It's a draw!");
     } else {
         if((userChoice === "paper" && computerChoice === "rock") || 
            (userChoice === "scissors" && computerChoice === "paper") ||
            (userChoice === "rock" && computerChoice === "scissors")) {
-            console.log("You win ! " + userChoiceOut + " > " + computerChoiceOut);
+            console.log("You win !");
             userScore++;
         } else {
-            console.log("You loose ... " + computerChoiceOut + " > " + userChoiceOut);
+            console.log("You loose ... ");
             computerScore++;
         }
     }
@@ -158,15 +146,18 @@ function printScore(userScore, computerScore) {
 }
 
 function showSelectMenu(actualRound, round, userScore, computerScore) {
-    mainMenu.style.display = "none";
     selectMenu.style.display = "block";
     actualRoundText.textContent = actualRound;
     numberRoundText.textContent = round;
-    userScoreText = userScore;
-    computerScoreText = computerScore;
-
+    userScoreText.textContent = userScore;
+    computerScoreText.textContent = computerScore;
 }
-
-function getRound() {
-
+function hideMainMenu() {
+    mainMenu.style.display = "none";
+}
+function hideSelectMenu() {
+    selectMenu.style.display = "none"
+}
+function showVersusMenu() {
+    versus.style.display="block";
 }
