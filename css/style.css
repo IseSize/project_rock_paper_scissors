@@ -202,6 +202,10 @@ body {
     height: 100%;
     background-image: url(../assets/images/ui/vsBar.svg);
     background-size: cover;
+    
+}
+#vsBar:hover {
+    cursor: pointer;
 }
 #userCharacter, #computerCharacter {
     width: 70%;
@@ -233,4 +237,60 @@ body {
     100% {
         transform: translateX(-60%); 
     }
+}
+#win, #lose, #draw {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#win {
+    background-image: url(../assets/images/ui/winBack.svg);
+    background-size: cover;
+}
+#lose {
+    background-image: url(../assets/images/ui/loseBack.svg);
+    background-size: cover;
+}
+#draw {
+    background-image: url(../assets/images/ui/drawBack.svg);
+    background-size: cover;
+}
+#winUserCharacter {
+    position: absolute;
+    width: 50%;
+    bottom: 25%;
+    right: 15%;
+}
+#winComputerCharacter {
+    position: absolute;
+    width: 20%;
+    bottom: 35%;
+    left: 10%;
+}
+#loseUserCharacter {
+    position: absolute;
+    width: 50%;
+    bottom: 5%;
+    left: 20%;
+}
+#loseComputerCharacter {
+    position: absolute;
+    width: 20%;
+    bottom: 38%;
+    right: 8%;
+}
+#drawUserCharacter {
+    position: absolute;
+    width: 50%;
+    bottom: 15%;
+    left: 0%;
+}
+#drawComputerCharacter {
+    position: absolute;
+    width: 50%;
+    bottom: 15%;
+    right: 0%;
 }
