@@ -14,7 +14,7 @@ const numberRoundText = document.querySelector("#numberRound");
 const userScoreText = document.querySelector("#userScore");
 const computerScoreText = document.querySelector("#computerScore");
 const characterSelection = document.querySelectorAll(".character");
-const versusMenu = document.querySelector("#versus");
+const versusMenu = document.querySelector("#versusMenu");
 const vsBar = document.querySelector("#vsBar");
 const userCharacter = document.querySelector("#userCharacter");
 const computerCharacter = document.querySelector("#computerCharacter");
@@ -29,6 +29,13 @@ const drawComputerCharacter = document.querySelector("#drawComputerCharacter");
 const winMenu = document.querySelector("#win");
 const loseMenu = document.querySelector("#lose");
 const drawMenu = document.querySelector("#draw");
+
+const finalMenu = document.querySelector("#finalMenu");
+const userFinalScore = document.querySelector("#userFinalScore");
+const computerFinalScore = document.querySelector("#computerFinalScore");
+const finalIcone = document.querySelector("#finalIcone");
+const finalText = document.querySelector("#finalText");
+const replayButton = document.querySelector("#replayButton");
 
 var userScore = 0;
 var computerScore = 0;
@@ -62,8 +69,17 @@ characterSelection.forEach((elem) => {
     });
 });
 
+replayButton.addEventListener("click", (e) => {
+    game("restart", finalMenu);
+    e.stopPropagation();
+});
+
 function game(gameState, previousMenu) {
     switch(gameState) {
+        case "restart":
+            hideMenu(previousMenu);
+            showMenu(mainMenu);
+            break;
         case "init":
             startGame();
             game("selectChar", mainMenu);
@@ -104,9 +120,21 @@ function game(gameState, previousMenu) {
             }
             break;
         case "finalScreen":
-                console.log("final screen");
-                console.log("_".repeat(30));
-                console.log(" ");
+            hideMenu(previousMenu);
+            showMenu(finalMenu);
+            userFinalScore.textContent = userScore;
+            computerFinalScore.textContent = computerScore;
+            if(userScore > computerScore) {
+                finalIcone.setAttribute("src", "assets/images/ui/trophy.svg");
+                finalText.textContent = "You win !";
+                finalText.style.color = "#F2CF66";
+            } else if(userScore < computerScore) {
+                finalIcone.setAttribute("src", "assets/images/character/"+userChoice+"Lose.svg");
+                finalText.textContent = "You lose ...";
+            } else {
+                finalIcone.setAttribute("src", "assets/images/ui/whiteFlag.svg");
+                finalText.textContent = "Draw !";
+            }
             break;
     }
 }
@@ -155,20 +183,7 @@ function playRound(userChoice, computerChoice) {
             computerScore++;
             roundState = "lose";
         }
-    }
-    
-
-    printScore(userScore, computerScore);
-    console.log("_".repeat(30));
-    console.log(" ");
-    
-}
-
-
-
-function printScore(userScore, computerScore) {
-    console.log(" ".repeat(10) + "| Score |" + " ".repeat(10));
-    console.log(" ".repeat(5) + "You : " + userScore + " | Computer : " + computerScore);
+    }    
 }
 
 function hideMenu(menu) {
@@ -189,7 +204,6 @@ function showSelectMenu(actualRound, round, userScore, computerScore) {
     userScoreText.textContent = userScore;
     computerScoreText.textContent = computerScore;
 }
-
 
 function waitOrClic(nextGameState, actualMenu, timeInMs) {
     let timeOutId;

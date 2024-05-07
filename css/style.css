@@ -4,19 +4,11 @@
 }
 body {
     font-family: "Karate";
+    margin: 0;
+    padding: 0;
+
 }
-@media (orientation:portrait) {
-    #game {
-        width: 80vw;
-        height: 80vw;
-    }
-}
-@media (orientation:landscape) {
-    #game {
-        width: 80vh;
-        height: 80vh;
-    }
-}
+
 .landscape {
     width: 80vh;
     height: 80vh;
@@ -26,7 +18,7 @@ body {
     height: 80vw;
 }
 #game {   
-    margin: 20px auto;
+    
     background-color: #FFF6BF;
 }
 /*//// COMMON /////////*/
@@ -146,7 +138,7 @@ body {
 }
 .selectTopText {
     position: absolute;
-    font-size: 40px;
+    font-size: 200%;
 }
 #actualRound {
     top: 6%;
@@ -166,7 +158,7 @@ body {
 }
 #selectCharacterText {
     margin-top: 10%;
-    font-size: 40px;
+    font-size: 250%;
     text-align: center;
 }
 #selectMenuTop {
@@ -186,7 +178,7 @@ body {
     width: 40%;
     cursor: pointer;
 }
-#versus {
+#versusMenu {
     display: none;
     overflow: hidden;
     position: relative;
@@ -293,4 +285,111 @@ body {
     width: 50%;
     bottom: 15%;
     right: 0%;
+}
+
+#finalMenu {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/images/ui/finalScreen.svg);
+    background-size: cover;
+}
+
+.finalScoreText {
+    font-size: 300%;
+    position: absolute;
+}
+#userFinalScore {
+    top: 17%;
+    left: 41%;
+}
+#computerFinalScore {
+    top: 17%;
+    right: 38%;
+}
+#finalText {
+    font-size: 600%;
+    position: relative;
+    text-align: center;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#finalIcone {
+    width: 30%;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#replayButtonSection {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    box-sizing: border-box;
+}
+#replayButton {
+    width: 50%;
+    color: #684F3A;
+}
+
+#replayText {
+    font-size: 40px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#replayButton:hover {
+    cursor: pointer;
+    position: relative;
+    bottom: 15px;
+    color: #3A2C22;
+}
+
+@media (orientation:portrait) {
+    #game {
+        margin: 20px auto;
+        width: 80vw;
+        height: 80vw;
+    }
+}
+@media (orientation:landscape) {
+    #game {
+        margin: 20px auto;
+        width: 80vh;
+        height: 80vh;
+    }
+}
+@media (max-width : 800px) {
+    #game {
+        width: 100vw;
+        height: 100vw;
+        margin: 0;
+    }
+    #finalText {
+        font-size: 400%;
+    }
+    
+    .finalScoreText {
+        font-size: 200%;
+    }
+
+}
+@media (max-width : 450px) {
+    #playText {
+        font-size: 200%;
+    }
+    .finalScoreText, .selectTopText {
+        font-size: 150%;
+    }
+    #selectCharacterText {
+        font-size: 150%;
+    }
+    #selectRound {
+        font-size: 150%;
+    }
 }
